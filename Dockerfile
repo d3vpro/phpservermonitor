@@ -10,9 +10,9 @@ RUN apt-get update
 
 # Install & Setup Dependencies
 RUN set -ex; \
-    apt-get install -y curl iputils-ping; \
-    apt-get install -y zip unzip git; \
+    apt-get install -y curl iputils-ping zip unzip git libicu-dev; \
     #docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-webp-dir=/usr --with-png-dir=/usr --with-xpm-dir=/usr; \
+    docker-php-ext-configure intl; \
     docker-php-ext-install pdo pdo_mysql mysqli intl sockets; \
     apt-get clean -y; \
     rm -rf /var/lib/apt/lists/*; \
